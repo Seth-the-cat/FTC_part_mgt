@@ -1,0 +1,17 @@
+<div id="<%= dom_id manufacturer %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Manufacturer name:</strong>
+    <%= manufacturer.manufacturer_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Website:</strong>
+    <%= manufacturer.website %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this manufacturer", manufacturer, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this manufacturer", edit_manufacturer_path(manufacturer), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

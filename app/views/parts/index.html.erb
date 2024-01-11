@@ -1,0 +1,38 @@
+
+  <div class="flex justify-between items-center pb-2">
+    <h1 class="font-bold text-4xl dark:text-white">Parts</h1>
+    <%= link_to "New part", new_part_path, class: "rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="parts">
+    <table class="border-collapse w-full border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
+      <tr>
+        <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Part number:</th>
+        <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Part name:</th>
+        <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Manufacturer:</th>
+        <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Quantity:</th>
+        <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Description:</th>
+      </tr>
+      <% @parts.each do |part| %>
+        <tr class="text-slate-500 dark:text-slate-300" id="<%= dom_id part %>">
+          <td class="border border-slate-300 dark:border-slate-600 p-4 ">
+            <%= part.part_number %>
+          </td>
+          <td class="border border-slate-300 dark:border-slate-600 p-4 ">
+            <%= link_to part.part_name, part %>
+          </td>
+
+          <td class="border border-slate-300 dark:border-slate-600 p-4 ">
+            <%= part.manufacturer.manufacturer_name %>
+          </td>
+
+          <td class="border border-slate-300 dark:border-slate-600 p-4 ">
+            <%= part.quantity %>
+          </td>
+          <td class="border border-slate-300 dark:border-slate-600 p-4 ">
+            <%= part.description %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+  </div>
