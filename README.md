@@ -1,5 +1,5 @@
 # README
-<h1 style="text-color: red;"> This is a work in progress and does not have all required features </h1>
+<h1 style="color: rgb(255 0 0);"> This is a work in progress and does not have all required features </h1>
 # FTC part managment
 
 This README would normally document whatever steps are necessary to get the
