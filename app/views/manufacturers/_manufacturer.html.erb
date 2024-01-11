@@ -6,7 +6,7 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Website:</strong>
-    <%= manufacturer.website %>
+    <%= link_to manufacturer.website, manufacturer.website %>
   </p>
 
   <% if action_name != "show" %>
