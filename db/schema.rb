@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_30_154252) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_17_170658) do
   create_table "assignments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
@@ -55,6 +55,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_154252) do
     t.index ["manufacturer_id"], name: "index_parts_on_manufacturer_id"
   end
 
+  create_table "project_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "project_type_name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "project_name"
+    t.bigint "part_id", null: false
+    t.bigint "project_type_id", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["part_id"], name: "index_projects_on_part_id"
+    t.index ["project_type_id"], name: "index_projects_on_project_type_id"
+  end
+
   create_table "rights", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "resource"
     t.string "operation"
@@ -87,4 +105,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_154252) do
   add_foreign_key "grants", "rights"
   add_foreign_key "grants", "roles"
   add_foreign_key "parts", "manufacturers"
+  add_foreign_key "projects", "parts"
+  add_foreign_key "projects", "project_types"
 end
