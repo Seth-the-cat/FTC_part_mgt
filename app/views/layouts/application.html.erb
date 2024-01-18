@@ -4,23 +4,23 @@
     <title>PartsMgtApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script>
-    function toggleTheme() {
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
+      function toggleTheme() {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
       }
-    }
 
-    // Whenever the user explicitly chooses light mode
-    localStorage.theme = 'light'
+      // Whenever the user explicitly chooses light mode
+      localStorage.theme = 'light'
 
-    // Whenever the user explicitly chooses dark mode
-    localStorage.theme = 'dark'
+      // Whenever the user explicitly chooses dark mode
+      localStorage.theme = 'dark'
 
-    // Whenever the user explicitly chooses to respect the OS preference
-    localStorage.removeItem('theme')
-</script>
+      // Whenever the user explicitly chooses to respect the OS preference
+      localStorage.removeItem('theme')
+    </script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -30,10 +30,10 @@
   <body class="dark:bg-slate-700">
     <%= render "layouts/header" %>
     <div class="items-center w-4/5 m-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-    <%= yield %>
+      <% if notice.present? %>
+        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+      <% end %>
+      <%= yield %>
     </div>
   </body>
 </html>
