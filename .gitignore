@@ -38,6 +38,7 @@
 /config/master.key
 /config/credentials.yml.enc
 /config/database.yml
+/config/environments/production.rb
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
