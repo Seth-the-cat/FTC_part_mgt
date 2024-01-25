@@ -3,5 +3,5 @@ class Part < ApplicationRecord
   validates :manufacturer_name, :number, :quantity, :manufacturer_id, :description, presence: true
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }
 
-  belongs_to :project, dependent: :destroy
+  has_and_belongs_to_many :project, join_table: "parts_projects", dependent: :destroy
 end

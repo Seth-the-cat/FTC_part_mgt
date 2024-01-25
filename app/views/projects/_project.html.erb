@@ -4,14 +4,14 @@
     <%= project.project_name %>
   </p>
 
-  <p class="my-5">
+  <div class="my-5 ml-4">
     <strong class="block font-medium mb-1">Parts:</strong>
-    <ol class="list-decimal list-inside">
+    <ol class="list-decimal list-inside ml-4">
     <% project.parts.each do |part| %>
-      <li><%= link_to part.part_name, part %></li>
+      <li><%= part.part_name %></li>
     <% end %>
     </ol>
-  </p>
+  </div>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Project type:</strong>
