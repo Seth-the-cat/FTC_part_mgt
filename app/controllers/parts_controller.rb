@@ -57,6 +57,10 @@ class PartsController < ApplicationController
     end
   end
 
+  def checkout
+    @parts = Part.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_part

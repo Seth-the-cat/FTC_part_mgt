@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :projects
   resources :project_types
-  resources :parts
+  resources :parts do
+    collection do
+      get 'list'
+    end
+  end
   resources :manufacturers
   resources :assignments
   resources :grants
@@ -15,6 +19,8 @@ Rails.application.routes.draw do
   end
 
   get "homepage" => 'contents#homepage'
+
+  get "checkout" => 'parts#checkout'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -22,5 +28,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-   root "parts#index"
+  root "parts#index"
 end

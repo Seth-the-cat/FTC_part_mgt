@@ -17,8 +17,17 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :part_id %>
-    <%= form.text_field :part_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :part %>
+    <%= form.fields_for :parts do |ff| %>
+      <div>
+        <%= ff.text_field :part_name, list: "part_names_autocomplete" %>
+        <datalist id="part_names_autocomplete">
+          <% Part.all.each do |part| %>
+            <option value="<%= part.id %>"><%= part.part_name %></option>
+          <% end %>
+        </datalist>
+    </div>
+    <% end %>
   </div>
 
   <div class="my-5">
