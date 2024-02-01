@@ -12,6 +12,7 @@
         <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Manufacturer:</th>
         <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left"><button onclick="sortTable()">Quantity:</button></th>
         <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Description:</th>
+        <th class="w-1/5 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">&nbsp;</th>
       </tr>
       <% @parts.each do |part| %>
         <tr class="text-slate-500 dark:text-slate-300" id="<%= dom_id part %>">
@@ -31,6 +32,9 @@
           </td>
           <td class="border border-slate-300 dark:border-slate-600 p-4 ">
             <%= part.description %>
+          </td>
+          <td class="border border-slate-300 dark:border-slate-600 p-4 ">
+            <%= link_to "add to project", checkout_path(:part_id => part.id)%>
           </td>
         </tr>
       <% end %>
