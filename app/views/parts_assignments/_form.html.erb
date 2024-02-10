@@ -12,13 +12,19 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :part_id %>
-    <%= form.text_field :part_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <% if params['part_id'].blank? %>
+      <%= form.label :part, "Part" %>
+      <%= form.text_field :part_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <% else %>
+      <%= form.label :part_number, "Part:" %>
+      <div> <%= @part.part_number %> - <%= @part.part_name %></div>
+      <%= form.text_field :part_id, :value => params['part_id'], :type => 'hidden', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <% end %>
   </div>
 
   <div class="my-5">
-    <%= form.label :project_id %>
-    <%= form.text_field :project_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <%= form.label :project_name %>
+        <%= form.collection_select :project_id, Project.all, :id, :project_name, options = {:order => 'resource ASC', :prompt => true},  html_options = {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
   </div>
 
   <div class="inline">

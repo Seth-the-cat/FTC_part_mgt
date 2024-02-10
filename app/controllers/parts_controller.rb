@@ -4,6 +4,7 @@ class PartsController < ApplicationController
   # GET /parts or /parts.json
   def index
     @parts = Part.all
+    @parts_assignments = PartsAssignment.all
   end
 
   # GET /parts/1 or /parts/1.json
@@ -58,7 +59,7 @@ class PartsController < ApplicationController
   end
 
   def checkout
-    @parts = Part.all
+    @part = Part.find(params[:part_id])
   end
 
   private
