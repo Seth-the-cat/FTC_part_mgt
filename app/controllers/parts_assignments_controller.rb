@@ -13,7 +13,9 @@ class PartsAssignmentsController < ApplicationController
   # GET /parts_assignments/new
   def new
     @parts_assignment = PartsAssignment.new
-    @part = Part.find(params[:part_id])
+    if params[:part_id]
+      @part = Part.find(params[:part_id])
+    end
   end
 
   # GET /parts_assignments/1/edit

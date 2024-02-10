@@ -14,7 +14,8 @@
   <div class="my-5">
     <% if params['part_id'].blank? %>
       <%= form.label :part, "Part" %>
-      <%= form.text_field :part_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.collection_select :part_id, Part.all, :id, :part_name, options = {:order => 'resource ASC', :prompt => true},  html_options = {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
+
     <% else %>
       <%= form.label :part_number, "Part:" %>
       <div> <%= @part.part_number %> - <%= @part.part_name %></div>

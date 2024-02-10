@@ -35,7 +35,7 @@
           </td>
           <td class="border border-slate-300 dark:border-slate-600 p-4 ">
             <% if @pa_array.include?(part.id) %>
-              <%= @parts_assignments.find(part.id).project.project_name %>
+              <%= @parts_assignments.where(part_id: part.id).first.project.project_name %>
             <% else %>
               <%= link_to "add to project", new_parts_assignment_path(:part_id => part.id) %>
             <% end %>
