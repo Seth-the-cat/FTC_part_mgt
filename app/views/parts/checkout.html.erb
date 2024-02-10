@@ -1,7 +1,21 @@
+<%= form_with(model: @part, class: "contents")  do |form| %>
 <div class="dark:text-slate-200">
-    <br />
-    Part ID: <input type="text" /><br /><br />
-    Project: <input type="text" /><br /><br />
-    <br />
+
+  <div class="my-5">
+    <%= form.label :part_number, "Part:" %>
+    <div> <%= @part.part_number %> - <%= @part.part_name %></div>
+    <%= form.text_field :part_id, :value => params['part_id'], :type => 'hidden', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.fields_for :parts_projects do |pp| %>
+      <%= pp.fields_for :project do |proj| %>
+        <%= proj.label :project_name %>
+        <%= proj.collection_select :project_id, Project.all, :id, :project_name, options = {:order => 'resource ASC', :prompt => true},  html_options = {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
 </div>
-<%= link_to "Assign Part to Project", @part, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<% end %>

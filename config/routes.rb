@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :parts_assignments
   resources :projects
   resources :project_types
   resources :parts do

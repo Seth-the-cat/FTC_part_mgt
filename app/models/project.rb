@@ -1,5 +1,7 @@
 class Project < ApplicationRecord
-  has_and_belongs_to_many :parts
+  
+  has_many :parts_assignments
+  has_many :parts, through: :parts_assignments
   belongs_to :project_type
 
   validates :project_name, presence: true, uniqueness: true
